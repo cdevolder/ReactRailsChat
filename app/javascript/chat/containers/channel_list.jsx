@@ -18,7 +18,7 @@ class ChannelList extends Component {
         className={channel === this.props.channelFromParams ? 'active' : null}
         role="presentation"
       >
-        <Link to={`/${channel}`}>
+        <Link to={`${channel}`}>
           #{channel}
         </Link>
       </li>

@@ -18,14 +18,12 @@ const identityReducer = (state = null) => state;
 
 const initialState = {
   messages: [],
-  channels: ['general', 'react', 'paris'],
-  currentUser: 'Utilisateur',
+  channels: ['Channel1', 'Channel2', 'Channel3', 'Channel4', 'Channel5']
 };
 
 const reducers = combineReducers({
   messages: messagesReducer,
   channels: identityReducer,
-  currentUser: identityReducer,
 });
 
 // Middlewares
@@ -37,10 +35,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        <Route path="/:channel" component={App} />
-        <Redirect from="/" to="/general" />
+        <Route path="/channels/:channel" component={App} />
       </Switch>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('chat_app')
 );
