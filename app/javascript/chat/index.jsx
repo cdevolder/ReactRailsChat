@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import reduxPromise from 'redux-promise';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import {createHistory as history } from 'history';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // internal modules
 import App from './components/app';
@@ -33,11 +32,11 @@ const store = createStore(reducers, initialState, middlewares);
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <BrowserRouter>
       <Switch>
         <Route path="/channels/:channel" component={App} />
       </Switch>
-    </Router>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('chat_app')
 );
