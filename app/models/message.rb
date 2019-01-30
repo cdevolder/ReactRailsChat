@@ -7,7 +7,7 @@ class Message < ApplicationRecord
   def as_json(options = {})
     {
       id: id,
-      author: user.email,
+      author: user.name,
       content: content,
       created_at: created_at,
       channel: channel.name
