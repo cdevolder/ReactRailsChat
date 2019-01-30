@@ -30,7 +30,7 @@ class ChannelList extends Component {
         role="presentation"
       >
         <Link to={`/channels/${channel.name}`}>
-          #{channel.name}
+          # {channel.name}
         </Link>
       </li>
     );
@@ -38,8 +38,7 @@ class ChannelList extends Component {
 
   render() {
     return (
-      <div className="">
-        <span>Redux Chat</span>
+      <div className="right-list">
         <ChannelForm />
         <div className="channels-container">
           <ul>
