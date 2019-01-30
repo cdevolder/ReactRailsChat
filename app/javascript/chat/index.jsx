@@ -12,17 +12,19 @@ import App from './components/app';
 
 // State and reducers
 import messagesReducer from './reducers/messages_reducer';
+import channelsReducer from './reducers/channels_reducer';
 
 const identityReducer = (state = null) => state;
+const chatApp = document.getElementById('chat_app')
 
 const initialState = {
   messages: [],
-  channels: ['Channel1', 'Channel2', 'Channel3', 'Channel4', 'Channel5']
+  channels: []
 };
 
 const reducers = combineReducers({
   messages: messagesReducer,
-  channels: identityReducer,
+  channels: channelsReducer,
 });
 
 // Middlewares
@@ -38,5 +40,5 @@ ReactDOM.render(
       </Switch>
     </BrowserRouter>
   </Provider>,
-  document.getElementById('chat_app')
+  chatApp
 );

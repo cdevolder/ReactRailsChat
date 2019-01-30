@@ -1,12 +1,20 @@
 <% if notice %>
-  <div class="alert alert-info alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <div class="alert alert-info alert-dismissible" id="cross-alert" role="alert">
+    <button type="button" onclick="hideAlert()" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <%= notice %>
   </div>
 <% end %>
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <div class="alert alert-warning alert-dismissible" id="cross-alert" role="alert">
+    <button type="button" onclick="hideAlert()" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <%= alert %>
   </div>
 <% end %>
+
+<script>
+  function hideAlert() {
+    const cross = document.getElementById("cross-alert");
+    cross.classList.add("fade");
+    cross.classList.add("hide");
+  }
+</script>

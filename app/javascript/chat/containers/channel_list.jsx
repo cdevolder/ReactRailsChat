@@ -2,24 +2,35 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchMessages } from '../actions/index';
+import { fetchChannels } from '../actions/index';
 import { Link } from 'react-router-dom';
+import ChannelForm from '../containers/channel_form';
+
 
 class ChannelList extends Component {
+  componentWillMount() {
+    this.fetchChannels();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.channelFromParams !== this.props.channelFromParams) {
       this.props.fetchMessages(nextProps.channelFromParams);
     }
   }
 
+  fetchChannels = () => {
+    this.props.fetchChannels();
+  }
+
   renderChannel = (channel) => {
     return (
       <li
-        key={channel}
+        key={channel.id}
         className={channel === this.props.channelFromParams ? 'active' : null}
         role="presentation"
       >
-        <Link to={`${channel}`}>
-          #{channel}
+        <Link to={`/channels/${channel.name}`}>
+          #{channel.name}
         </Link>
       </li>
     );
@@ -27,11 +38,14 @@ class ChannelList extends Component {
 
   render() {
     return (
-      <div className="channels-container">
+      <div className="">
         <span>Redux Chat</span>
-        <ul>
-          {this.props.channels.map(this.renderChannel)}
-        </ul>
+        <ChannelForm />
+        <div className="channels-container">
+          <ul>
+            {this.props.channels.map(this.renderChannel)}
+          </ul>
+        </div>
       </div>
     );
   }
@@ -44,7 +58,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMessages }, dispatch);
+  return bindActionCreators({ fetchMessages, fetchChannels }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChannelList);

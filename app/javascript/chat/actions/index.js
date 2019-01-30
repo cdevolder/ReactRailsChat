@@ -3,9 +3,17 @@ const BASE_URL = '/api/v1';
 export function fetchMessages(channel) {
   const url = `${BASE_URL}/channels/${channel}/messages`;
   const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
-
   return {
     type: 'FETCH_MESSAGES',
+    payload: promise
+  };
+}
+
+export function fetchChannels() {
+  const url = `${BASE_URL}/channels`;
+  const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
+  return {
+    type: 'FETCH_CHANNELS',
     payload: promise
   };
 }
@@ -31,15 +39,32 @@ export function createMessage(channel, content) {
   };
 }
 
+export function createChannel(content) {
+  const url = `${BASE_URL}/channels`;
+  const body = { content };
+  console.log(content);
+  console.log(body);
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
+  const promise = fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
+    },
+    credentials: 'same-origin',
+    body: JSON.stringify(body)
+  }).then(r => r.json());
+  console.log(promise);
+
+  return {
+    type: 'CHANNEL_CREATED',
+    payload: promise
+  };
+}
+
 export function selectChannel() {
   return {
     type: 'CHANNEL_SELECTED'
-  }
-}
-
-export function appendMessage(message) {
-  return {
-    type: 'MESSAGE_POSTED',
-    payload: message
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import { fetchMessages } from '../actions';
 import Message from '../components/message';
 import MessageForm from '../containers/message_form';
@@ -12,7 +11,7 @@ class MessageList extends Component {
   }
 
   componentDidMount() {
-    // this.refresher = setInterval(this.fetchMessages, 5000);
+    this.refresher = setInterval(this.fetchMessages, 5000);
   }
 
   componentDidUpdate() {
