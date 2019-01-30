@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   validates :content, presence:true
 
+  after_create :broadcast_message
+
   def as_json(options = {})
     {
       id: id,
@@ -13,4 +15,11 @@ class Message < ApplicationRecord
       channel: channel.name
     }
   end
+
+  private
+
+  def broadcast_message
+    ActionCable.server.broadcast("channel_#{channel.name}", self)
+  end
+  
 end
