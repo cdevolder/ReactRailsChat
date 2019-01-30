@@ -69,9 +69,9 @@ export function selectChannel() {
   }
 }
 
-export function appendMessage(message) {
-  return {
-    type: 'MESSAGE_POSTED',
-    payload: message
-  }
-}
+// export function appendMessage(message) {
+//   return {
+//     type: 'MESSAGE_POSTED',
+//     payload: message
+//   }
+// }
