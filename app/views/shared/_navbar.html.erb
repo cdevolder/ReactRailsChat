@@ -9,11 +9,11 @@
 
     <% if user_signed_in? %>
       <!-- Logout link (when logged in) -->
-      <div class="navbar-chat-item">
+      <div class="navbar-chat-link">
         <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
         <% end %>
-        <%= image_tag current_user.image %>
+        <%= image_tag current_user.image, class: 'img-circle' %>
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
@@ -27,10 +27,11 @@
   <div class="navbar-chat-item hidden-md hidden-lg">
     <% if user_signed_in? %>
       <!-- Logout link (when logged in) -->
-      <div class="navbar-chat-item">
+      <div class="navbar-chat-link">
         <%= link_to destroy_user_session_path, method: :delete do %>
           <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
         <% end %>
+        <%= image_tag current_user.image, class: 'img-circle' %>
       </div>
     <% else %>
       <!-- Login link (when logged out) -->

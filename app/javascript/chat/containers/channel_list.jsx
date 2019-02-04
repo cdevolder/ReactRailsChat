@@ -38,7 +38,7 @@ class ChannelList extends Component {
 
   render() {
     return (
-      <div className="right-list">
+      <div className="right-list hidden-xs hidden-sm">
         <ChannelForm />
         <div className="channels-container">
           <ul>

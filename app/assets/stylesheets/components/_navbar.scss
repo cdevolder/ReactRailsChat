@@ -1,7 +1,7 @@
 /* Main navbar */
 .navbar-chat {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: #222f3e;
   transition: all 0.3s ease;
   height: 70px;
   padding: 0px 30px;
@@ -39,10 +39,21 @@
 .navbar-chat-link {
   color: #616668;
   font-size: 14px;
+  background-color: #576574;
+  padding: 5px;
+  border-radius: 4px;
+}
+.navbar-chat-link > a {
+  color: #ffffff;
+  font-size: 14px;
+}
+.navbar-chat-link:hover > a {
+  text-decoration: none;
 }
 .navbar-chat-link:hover {
-  color: #da552f;
-  text-decoration: none;
+  color: #616668;
+  font-size: 14px;
+  background-color: #576574;
 }
 
 /* Dropdown menu */
@@ -62,6 +73,7 @@
 .navbar-chat-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
+  text-decoration: none;
 }
 .navbar-chat-dropdown-menu:before {
   content: ' ';
