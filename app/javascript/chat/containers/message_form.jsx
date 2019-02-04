@@ -24,19 +24,36 @@ class MessageForm extends Component {
   }
 
   render() {
-    return (
-      <form onSubmit={this.handleSubmit} className="channel-editor">
-        <input
-          ref={(input) => { this.messageBox = input; }}
-          type="text"
-          className="form-control"
-          autoComplete="off"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Send</button>
-      </form>
-    );
+    if (this.props.channelFromParams === "Exemple Channel") {
+      return (
+        <form onSubmit={this.handleSubmit} className="channel-editor">
+          <input
+            ref={(input) => { this.messageBox = input; }}
+            type="text"
+            className="form-control"
+            autoComplete="off"
+            value={this.state.value}
+            onChange={this.handleChange}
+            disabled
+          />
+          <button type="submit">Send</button>
+        </form>
+      );
+    } else {
+      return (
+        <form onSubmit={this.handleSubmit} className="channel-editor">
+          <input
+            ref={(input) => { this.messageBox = input; }}
+            type="text"
+            className="form-control"
+            autoComplete="off"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <button type="submit">Send</button>
+        </form>
+      );
+    }
   }
 }
 
