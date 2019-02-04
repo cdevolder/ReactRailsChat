@@ -35,7 +35,9 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-chat-item navbar-chat-link" %>
+      <div class="loginBtn loginBtn--facebook">
+        <%= link_to "Sign in with #{OmniAuth::Utils.camelize('facebook')}", omniauth_authorize_path('user', 'facebook') %><br />
+      </div>
     <% end %>
   </div>
 </div>
