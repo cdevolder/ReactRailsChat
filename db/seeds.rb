@@ -8,13 +8,16 @@ channel = Channel.create!(name: 'Exemple Channel')
 user = User.create!(
   email: 'john@gmail.com',
   password: 'topsecret',
-  name: 'John Smith'
+  name: 'John Smith',
+  image: "https://static1.squarespace.com/static/580f6748be6594a6e29eaa3b/t/581ced70579fb3dc45fb3c3e/1478290805859/"
   )
 
 user2 = User.create!(
   email: 'james@gmail.com',
   password: 'topsecret',
-  name: 'James Bond'
+  name: 'James Bond',
+  image: "http://complete-reference.com/img/user.png"
+
   )
 
 Message.create!(

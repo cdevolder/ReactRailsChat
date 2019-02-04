@@ -10,6 +10,7 @@ class Message < ApplicationRecord
     {
       id: id,
       author: user.name,
+      user_image: user.image,
       content: content,
       created_at: created_at,
       channel: channel.name
