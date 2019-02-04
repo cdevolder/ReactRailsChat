@@ -24,7 +24,7 @@ const initialState = {
 
 const reducers = combineReducers({
   messages: messagesReducer,
-  channels: channelsReducer,
+  channels: channelsReducer
 });
 
 // Middlewares

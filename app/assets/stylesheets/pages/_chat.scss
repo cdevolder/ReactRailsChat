@@ -4,17 +4,19 @@ body {
 
 .messaging-wrapper {
   display: flex;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 70px);
 }
 
 /* Column 1/2 *****************************************************************/
 
 .channels-container {
   margin-top: 10px;
-  width: 200px;
-  height: calc(100vh - 200px);
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 185px);
   box-sizing: border-box;
   overflow: scroll;
+  border: 1px solid;
 }
 
 .channels-container > span {
@@ -31,15 +33,17 @@ body {
 }
 
 .channels-container > ul > li {
-  margin: 10px 0;
+  width: 100%;
+  display: inline-block;
+  padding: 10px 5px;
   font-size: 14px;
   color: #7c7c7c;
   cursor: pointer;
+  border-bottom: 1px solid #34495e;
 }
 
 .channels-container > ul > li.active {
   font-weight: 600;
-  color: black
 }
 
 /* Column 2/2 *****************************************************************/
@@ -61,6 +65,9 @@ body {
 }
 
 .channel-title > span {
+  font-weight: 600;
+}
+.channel-title > button {
   font-weight: 600;
 }
 
@@ -136,9 +143,16 @@ button {
 .channel-form {
   display: flex;
   width: 100%;
-  border-top: 1px solid #f4f4f4;
+  margin: 0 10px;
 }
 
 .right-list {
   padding-top: 15px;
+  background: #222f3e;
+}
+
+.mobile-select-button {
+  position: absolute;
+  right: 0px;
+  top: 70px;
 }

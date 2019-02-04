@@ -11,10 +11,19 @@ class MessageList extends Component {
     this.fetchMessages();
   }
 
-  componentDidMount() { // For the first channel
-    this.refresher = setInterval(this.fetchMessages, 5000);
+  toggleMenu = () => {
+    const menu = (document.getElementById("hidden-menu"));
+    if (menu == null) {
+    } else {
+      menu.classList.toggle("hidden");
+      console.log(menu);
+    }
   }
-  
+
+  // componentDidMount() { // For the first channel
+  //   this.refresher = setInterval(this.fetchMessages, 5000);
+  // }
+
   // componentDidMount() { // For the first channel
   //   this.subscribeActionCable(this.props);
   // }
@@ -55,6 +64,9 @@ class MessageList extends Component {
       <div className="channel-container">
         <div className="channel-title">
           <span># {this.props.channelFromParams}</span>
+          <div className="hidden-md hidden-lg">
+            <button className="mobile-select-button" onClick={() => {this.toggleMenu()}}>Select channel</button>
+          </div>
         </div>
         <div className="channel-content" ref={(list) => { this.list = list; }}>
           {

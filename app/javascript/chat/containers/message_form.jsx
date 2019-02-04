@@ -35,6 +35,7 @@ class MessageForm extends Component {
             value={this.state.value}
             onChange={this.handleChange}
             disabled
+            placeholder="Please select another channel to test the app..."
           />
           <button type="submit">Send</button>
         </form>

@@ -22,15 +22,25 @@ class ChannelList extends Component {
     this.props.fetchChannels();
   }
 
+  toggleMenu = () => {
+    const menu = (document.getElementById("hidden-menu"));
+    if (menu == null) {
+    } else {
+      menu.classList.add("hidden");
+      console.log(menu);
+    }
+  }
+
   renderChannel = (channel) => {
     return (
       <li
         key={channel.id}
-        className={channel === this.props.channelFromParams ? 'active' : null}
+        className={channel.name === this.props.channelFromParams ? 'active' : null}
         role="presentation"
+        onClick={() => {this.toggleMenu()}}
       >
         <Link to={`/channels/${channel.name}`}>
-          # {channel.name}
+          > {channel.name}
         </Link>
       </li>
     );
@@ -38,10 +48,18 @@ class ChannelList extends Component {
 
   render() {
     return (
-      <div className="right-list hidden-xs hidden-sm">
-        <ChannelForm />
-        <div className="channels-container">
+      <div className="right-list">
+        <div className="hidden-xs hidden-sm">
+          <ChannelForm />
+          <div className="channels-container">
+            <ul>
+              {this.props.channels.map(this.renderChannel)}
+            </ul>
+          </div>
+        </div>
+        <div className="hidden-md hidden-lg channels-container hidden" id="hidden-menu">
           <ul>
+            <li><ChannelForm /></li>
             {this.props.channels.map(this.renderChannel)}
           </ul>
         </div>
