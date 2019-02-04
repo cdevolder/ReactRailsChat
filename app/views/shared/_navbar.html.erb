@@ -34,10 +34,7 @@
         <%= image_tag current_user.image, class: 'img-circle' %>
       </div>
     <% else %>
-      <!-- Login link (when logged out) -->
-      <div class="loginBtn loginBtn--facebook">
-        <%= link_to "Sign in with #{OmniAuth::Utils.camelize('facebook')}", omniauth_authorize_path('user', 'facebook') %><br />
-      </div>
+
     <% end %>
   </div>
 </div>
