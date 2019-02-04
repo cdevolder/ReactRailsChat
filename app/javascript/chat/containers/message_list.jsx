@@ -13,10 +13,8 @@ class MessageList extends Component {
 
   toggleMenu = () => {
     const menu = (document.getElementById("hidden-menu"));
-    if (menu == null) {
-    } else {
+    if (menu !== null) {
       menu.classList.toggle("hidden");
-      console.log(menu);
     }
   }
 

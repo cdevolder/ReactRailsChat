@@ -24,10 +24,8 @@ class ChannelList extends Component {
 
   toggleMenu = () => {
     const menu = (document.getElementById("hidden-menu"));
-    if (menu == null) {
-    } else {
+    if (menu !== null) {
       menu.classList.add("hidden");
-      console.log(menu);
     }
   }
 

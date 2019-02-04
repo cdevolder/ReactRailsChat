@@ -28,7 +28,7 @@ const reducers = combineReducers({
 });
 
 // Middlewares
-const middlewares = applyMiddleware(reduxPromise, logger);
+const middlewares = applyMiddleware(reduxPromise);
 const store = createStore(reducers, initialState, middlewares);
 
 // render an instance of the component in the DOM
