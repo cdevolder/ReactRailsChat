@@ -1,8 +1,8 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { host: "https://devolder-chat.herokuapp.com" }
 
-  config.web_socket_server_url = "wss://devolder-chat.herokuapp.com/cable"
-
+  # Action cable:
+  config.action_cable.url = "wss://devolder-chat.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://devolder-chat.herokuapp.com']
 
   # Verifies that versions and hashed value of the package contents in the project's package.json
