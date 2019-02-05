@@ -42,8 +42,6 @@ export function createMessage(channel, content) {
 export function createChannel(content) {
   const url = `${BASE_URL}/channels`;
   const body = { content };
-  console.log(content);
-  console.log(body);
   const csrfToken = document.querySelector('meta[name="csrf-token"]').attributes.content.value;
   const promise = fetch(url, {
     method: 'POST',

@@ -18,10 +18,6 @@ class MessageList extends Component {
     }
   }
 
-  // componentDidMount() { // For the first channel
-  //   this.refresher = setInterval(this.fetchMessages, 5000);
-  // }
-
   componentDidMount() { // For the first channel
     this.subscribeActionCable(this.props);
   }
@@ -45,16 +41,17 @@ class MessageList extends Component {
   }
 
   subscribeActionCable = (props) => {
-    App[`channel_${props.channelFromParams}`] = App.cable.subscriptions.create(
+    App[`channel_${this.props.channelFromParams}`] = App.cable.subscriptions.create(
       { channel: 'ChannelsChannel', name: props.channelFromParams },
       {
         received: (message) => {
-          if (message.channel === props.channelFromParams) {
+          if (message.channel === this.props.channelFromParams) {
             props.appendMessage(message);
           }
         }
       }
     );
+
   }
 
   render () {
