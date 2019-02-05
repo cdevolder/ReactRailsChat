@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchMessages } from '../actions';
+import { fetchMessages, appendMessage } from '../actions';
 // import { fetchMessages, appendMessage } from '../actions';
 import Message from '../components/message';
 import MessageForm from '../containers/message_form';
@@ -22,15 +22,15 @@ class MessageList extends Component {
   //   this.refresher = setInterval(this.fetchMessages, 5000);
   // }
 
-  // componentDidMount() { // For the first channel
-  //   this.subscribeActionCable(this.props);
-  // }
+  componentDidMount() { // For the first channel
+    this.subscribeActionCable(this.props);
+  }
 
-  // componentWillReceiveProps(nextProps) { // For after switching channels
-  //   if (this.props.channelFromParams != nextProps.channelFromParams) {
-  //     this.subscribeActionCable(nextProps);
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) { // For after switching channels
+    if (this.props.channelFromParams != nextProps.channelFromParams) {
+      this.subscribeActionCable(nextProps);
+    }
+  }
 
   componentDidUpdate() {
     this.list.scrollTop = this.list.scrollHeight;
@@ -44,18 +44,18 @@ class MessageList extends Component {
     this.props.fetchMessages(this.props.channelFromParams);
   }
 
-  // subscribeActionCable = (props) => {
-  //   App[`channel_${props.channelFromParams}`] = App.cable.subscriptions.create(
-  //     { channel: 'ChannelsChannel', name: props.channelFromParams },
-  //     {
-  //       received: (message) => {
-  //         if (message.channel === props.channelFromParams) {
-  //           props.appendMessage(message);
-  //         }
-  //       }
-  //     }
-  //   );
-  // }
+  subscribeActionCable = (props) => {
+    App[`channel_${props.channelFromParams}`] = App.cable.subscriptions.create(
+      { channel: 'ChannelsChannel', name: props.channelFromParams },
+      {
+        received: (message) => {
+          if (message.channel === props.channelFromParams) {
+            props.appendMessage(message);
+          }
+        }
+      }
+    );
+  }
 
   render () {
     return (
@@ -86,8 +86,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMessages }, dispatch);
-  // return bindActionCreators({ fetchMessages, appendMessage }, dispatch);
+  // return bindActionCreators({ fetchMessages }, dispatch);
+  return bindActionCreators({ fetchMessages, appendMessage }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageList);
