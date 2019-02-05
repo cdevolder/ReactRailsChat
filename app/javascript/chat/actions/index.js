@@ -40,7 +40,6 @@ export function createMessage(channel, content) {
 }
 
 export function createChannel(content) {
-  debugger
   const url = `${BASE_URL}/channels`;
   const body = { content };
   console.log(content);
